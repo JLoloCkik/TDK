@@ -2,31 +2,37 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <title>Számológép</title>
+    <title>AI Számológép</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="calculator">
-    <div class="display">0</div>
-    <div class="buttons">
-        <button class="btn operator" id="clear" data-type="clear" value="AC">AC</button>
-        <button class="btn operator" data-type="operator" value="/">÷</button>
-        <button class="btn operator" data-type="operator" value="*">×</button>
-        <button class="btn operator" data-type="operator" value="-">−</button>
-        <button class="btn" data-type="number" value="7">7</button>
-        <button class="btn" data-type="number" value="8">8</button>
-        <button class="btn" data-type="number" value="9">9</button>
-        <button class="btn operator add" data-type="operator" value="+">+</button>
-        <button class="btn" data-type="number" value="4">4</button>
-        <button class="btn" data-type="number" value="5">5</button>
-        <button class="btn" data-type="number" value="6">6</button>
-        <button class="btn" data-type="number" value="1">1</button>
-        <button class="btn" data-type="number" value="2">2</button>
-        <button class="btn" data-type="number" value="3">3</button>
-        <button class="btn equals" data-type="equals" value="=">=</button>
-        <button class="btn zero" data-type="number" value="0">0</button>
-        <button class="btn" data-type="number" value=".">.</button>
-<!--        <button class="btn" data-type="AI" value="">AI</button>-->
+<div class="calculator-container">
+    <button class="btn ai-btn" data-type="ai" value="AI">AI</button>
+    <div class="calculator">
+        <div class="display">0</div>
+        <div class="buttons">
+            <button class="btn operator" id="clear" data-type="clear" value="AC">AC</button>
+            <button class="btn operator" data-type="operator" value="/">÷</button>
+            <button class="btn operator" data-type="operator" value="*">×</button>
+            <button class="btn operator" data-type="operator" value="-">−</button>
+
+            <button class="btn" data-type="number" value="7">7</button>
+            <button class="btn" data-type="number" value="8">8</button>
+            <button class="btn" data-type="number" value="9">9</button>
+            <button class="btn operator add" data-type="operator" value="+">+</button>
+
+            <button class="btn" data-type="number" value="4">4</button>
+            <button class="btn" data-type="number" value="5">5</button>
+            <button class="btn" data-type="number" value="6">6</button>
+
+            <button class="btn" data-type="number" value="1">1</button>
+            <button class="btn" data-type="number" value="2">2</button>
+            <button class="btn" data-type="number" value="3">3</button>
+
+            <button class="btn equals" data-type="equals" value="=">=</button>
+            <button class="btn zero" data-type="number" value="0">0</button>
+            <button class="btn" data-type="number" value=".">.</button>
+        </div>
     </div>
 </div>
 <script src="calculator.js"></script>

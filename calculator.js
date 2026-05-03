@@ -3,24 +3,25 @@ let cur = '0', first = null, op = null, reset = false;
 
 const update = () => display.textContent = cur;
 
-
-async function callBackend(a, b, operator) {
+async function callBackend(endpoint, body) {
     try {
-        const r = await fetch('http://localhost/api/calculate', {
+        const r = await fetch(`http://localhost/api/${endpoint}`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ a, b, operator })
+            body: JSON.stringify(body)
         });
         const d = await r.json();
         cur = String(d.result);
     } catch (e) {
-        const m = {'+':a+b, '-':a-b, '*':a*b, '/':b===0?'Hiba':a/b};
-        cur = String(m[operator]);
+        if(endpoint === 'calculate') {
+            const m = {'+':body.a+body.b, '-':body.a-body.b, '*':body.a*body.b, '/':body.b===0?'Hiba':body.a/body.b};
+            cur = String(m[body.operator]);
+        } else cur = "Error";
     }
     update();
 }
 
-document.querySelector('.buttons').addEventListener('click', e => {
+document.querySelector('.calculator-container').addEventListener('click', e => {
     const btn = e.target;
     if (!btn.matches('button')) return;
     const { type } = btn.dataset, val = btn.value;
@@ -33,8 +34,11 @@ document.querySelector('.buttons').addEventListener('click', e => {
         op = val;
         reset = true;
     } else if (type === 'equals' && op) {
-        callBackend(first, parseFloat(cur), op);
+        callBackend('calculate', { a: first, b: parseFloat(cur), operator: op });
         op = null; reset = true;
+    } else if (type === 'ai') {
+        callBackend('ai', { text: cur });
+        reset = true;
     } else if (type === 'clear') {
         cur = '0'; first = op = null; reset = false;
     }
