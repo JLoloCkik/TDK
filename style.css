@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #333;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.calculator {
+    width: 320px;
+    background: #444;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #555;
+}
+
+.display {
+    width: 100%;
+    height: 70px;
+    background: #222;
+    color: #fff;
+    font-size: 2.5rem;
+    text-align: right;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    grid-template-areas: "clear div mul sub" "n7 n8 n9 add" "n4 n5 n6 add" "n1 n2 n3 eq" "n0 n0 dot eq";
+}
+
+.btn {
+    padding: 20px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #666;
+    color: #fff;
+}
+
+.operator {
+    background: #f09a36;
+}
+
+.add {
+    grid-area: add;
+}
+
+.equals {
+    grid-area: eq;
+    background: #367cf0;
+}
+
+.zero {
+    grid-area: n0;
+}
+
+#clear {
+    grid-area: clear;
+}
+
+.controls {
+    color: #fff;
+    text-align: center;
+    background: #444;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
