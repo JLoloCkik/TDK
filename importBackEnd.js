@@ -5,7 +5,7 @@ const update = () => display.textContent = cur;
 
 async function callBackend(endpoint, body) {
     try {
-        const r = await fetch(`http://localhost/api/${endpoint}`, {
+        const r = await fetch(`http://127.0.0.1:5000/api/${endpoint}`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(body)
@@ -13,10 +13,7 @@ async function callBackend(endpoint, body) {
         const d = await r.json();
         cur = String(d.result);
     } catch (e) {
-        if(endpoint === 'calculate') {
-            const m = {'+':body.a+body.b, '-':body.a-body.b, '*':body.a*body.b, '/':body.b===0?'Hiba':body.a/body.b};
-            cur = String(m[body.operator]);
-        } else cur = "Error";
+        cur = "Szerver hiba";
     }
     update();
 }

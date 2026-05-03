@@ -1,7 +1,6 @@
 from pathlib import Path
 
 import ollama
-import os
 
 def load_rules(mappa=".cursorrules"):
     p = Path(mappa)
