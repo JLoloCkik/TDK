@@ -1,6 +1,8 @@
 from pathlib import Path
-
+from flask import Flask, request, jsonify
 import ollama
+from calculator import app
+
 
 def load_rules(mappa=".cursorrules"):
     p = Path(mappa)

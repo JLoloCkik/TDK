@@ -3,90 +3,124 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #333;
+    background: radial-gradient(circle at top, #3a3a3a, #1e1e1e);
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .calculator-container {
+    width: 340px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+}
+
+/* ---- AI ---- */
+#ai-container {
+    display: flex;
     gap: 10px;
-    width: 320px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 12px;
 }
 
-.ai-btn {
-    align-self: flex-start;
-    background: #6a5acd;
-    padding: 10px 20px;
-    font-size: 1rem;
+#ai-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
     border: none;
-    border-radius: 5px;
-    color: #fff;
+    background: #222;
+    color: white;
+}
+
+#ai-send {
+    background: linear-gradient(135deg, #6a5acd, #836fff);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: white;
     cursor: pointer;
-    font-weight: bold;
 }
 
-.ai-btn:hover {
-    background: #836fff;
-}
-
+/* ---- CALC ---- */
 .calculator {
-    background: #444;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
     padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #555;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
 .display {
-    width: 100%;
-    height: 70px;
-    background: #222;
-    color: #fff;
-    font-size: 2.5rem;
+    height: 80px;
+    background: #1a1a1a;
+    color: white;
+    font-size: 2.8rem;
     text-align: right;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 12px;
     margin-bottom: 20px;
-    overflow: hidden;
 }
 
+/* ---- GRID ---- */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    grid-template-areas: "clear div mul sub" "n7 n8 n9 add" "n4 n5 n6 add" "n1 n2 n3 eq" "n0 n0 dot eq";
+    grid-template-areas:
+        "clear div mul sub"
+        "n7    n8  n9  add"
+        "n4    n5  n6  add"
+        "n1    n2  n3  eq"
+        "n0    n0  dot eq";
+    gap: 12px;
 }
 
+/* ---- BUTTON ---- */
 .btn {
     padding: 20px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
-    background: #666;
-    color: #fff;
+    background: #555;
+    color: white;
+    transition: 0.15s;
 }
 
-.operator {
-    background: #f09a36;
+.btn:hover {
+    transform: translateY(-2px);
 }
 
-.add {
-    grid-area: add;
-}
+/* ---- AREAS ---- */
+#clear { grid-area: clear; }
+
+.btn[data-value="/"] { grid-area: div; }
+.btn[data-value="*"] { grid-area: mul; }
+.btn[data-value="-"] { grid-area: sub; }
+.btn[data-value="+"] { grid-area: add; }
+
+.btn[data-value="7"] { grid-area: n7; }
+.btn[data-value="8"] { grid-area: n8; }
+.btn[data-value="9"] { grid-area: n9; }
+
+.btn[data-value="4"] { grid-area: n4; }
+.btn[data-value="5"] { grid-area: n5; }
+.btn[data-value="6"] { grid-area: n6; }
+
+.btn[data-value="1"] { grid-area: n1; }
+.btn[data-value="2"] { grid-area: n2; }
+.btn[data-value="3"] { grid-area: n3; }
+
+.btn[data-value="0"] { grid-area: n0; }
+
+.btn[data-type="decimal"] { grid-area: dot; }
 
 .equals {
     grid-area: eq;
-    background: #367cf0;
+    background: linear-gradient(145deg, #367cf0, #245edb);
 }
 
-.zero {
-    grid-area: n0;
-}
-
-#clear {
-    grid-area: clear;
+.operator {
+    background: linear-gradient(145deg, #f09a36, #d67f1f);
 }
