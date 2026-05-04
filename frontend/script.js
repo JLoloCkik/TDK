@@ -5,8 +5,6 @@ let cur = '0', prev = null, op = null, reset = false;
 
 const update = () => display.textContent = cur;
 
-
-// ---- API ----
 const api = async (url, body) => {
     try {
         const r = await fetch(`http://127.0.0.1:5000/api/${url}`, {

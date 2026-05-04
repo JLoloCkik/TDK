@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
+from ai import run_ai_task
+
 app = Flask(__name__)
 CORS(app)
 
@@ -27,7 +29,7 @@ def calc():
 @app.post('/api/ai')
 def ai():
     data = request.get_json()
-    print(f"AI LOG: {data.get('text')}")
+    run_ai_task(data.get('text'))
     return jsonify(success=True), 200
 
 if __name__ == '__main__':
