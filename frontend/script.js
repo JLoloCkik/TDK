@@ -6,28 +6,19 @@ let cur = '0', prev = null, op = null, reset = false;
 const update = () => display.textContent = cur;
 
 const api = async (url, body) => {
-    // Kiolvassuk, melyik backendet választottad a rádión
-    const port = document.querySelector('input[name="backend"]:checked').value;
-
     try {
-        const r = await fetch(`http://127.0.0.1:${port}/api/${url}`, {
+        const r = await fetch(`http://127.0.0.1:5000/api/${url}`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(body)
         });
         const data = await r.json();
-
         if (url === "calculate"){
-    cur = String(data.result);
-    update();
-} else if (url === "sqrt") {
             cur = String(data.result);
             update();
         }
     } catch (e) {
-        cur = "Szerver hiba";
-        update();
-        console.error("Hiba a backend elérésekor:", e);
+        console.error(e);
     }
 };
 
