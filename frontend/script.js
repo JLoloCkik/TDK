@@ -18,6 +18,9 @@ const api = async (url, body) => {
         const data = await r.json();
 
         if (url === "calculate"){
+    cur = String(data.result);
+    update();
+} else if (url === "sqrt") {
             cur = String(data.result);
             update();
         }
