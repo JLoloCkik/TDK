@@ -124,3 +124,17 @@ body {
 .operator {
     background: linear-gradient(145deg, #f09a36, #d67f1f);
 }
+
+
+.backend-selector {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 12px;
+    color: white;
+    margin-top: 15px;
+}
+.backend-selector label { cursor: pointer; font-weight: bold; }
